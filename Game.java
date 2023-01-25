@@ -138,7 +138,7 @@ public class Game
     private void printHelp() 
     {
         System.out.println("Not all those who wander are lost...");
-        System.out.println("But you sure are.");
+        System.out.println("But you sure seem to be.");
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println("   go quit help");
@@ -167,21 +167,8 @@ public class Game
         
     private void printLocationInfo()
     {
-        System.out.println("You are " + currentRoom.getDescription());
-            System.out.print("Exits: ");
-            if(currentRoom.getExits("north") != null) {
-                System.out.print("north ");
-            }
-            if(currentRoom.getExits("east") != null) {
-                System.out.print("east ");
-            }
-            if(currentRoom.getExits("south") != null) {
-                System.out.print("south ");
-            }
-            if(currentRoom.getExits("west") != null) {
-                System.out.print("west ");
-            }
-            System.out.println();
+        System.out.println(currentRoom.getLongDescription());
+            System.out.print(currentRoom.getExitString());
     }
     
 

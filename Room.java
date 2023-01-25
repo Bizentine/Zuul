@@ -10,15 +10,16 @@
  * to the neighboring room, or null if there is no exit in that direction.
  * 
  * @author  Michael Kölling and David J. Barnes
+ * Johnny Rinaldo
  * @version 2016.02.29
  */
 public class Room 
 {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private String description;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
 
     /**
      * Create a room described "description". Initially, it has
@@ -39,20 +40,21 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public Room getExit(String direction) 
     {
-        if(north != null) {
-            northExit = north;
+        if(direction.equals("north")) {
+            return northExit;
         }
-        if(east != null) {
-            eastExit = east;
+        if(direction.equals("east")) {
+            return eastExit;
         }
-        if(south != null) {
-            southExit = south;
+        if(direction.equals("south")) {
+            return southExit;
         }
-        if(west != null) {
-            westExit = west;
+        if(direction.equals("west")) {
+            return westExit;
         }
+        return null;
     }
 
     /**

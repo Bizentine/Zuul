@@ -48,15 +48,23 @@ public class Game
         mtVesuvius = new Room("on Mt Vesuvius.\n It sounds angry");
         
         // initialise room exits
-        HobShire.setExits(northernwastes, deadend, rainbowroad, pompeii);
-        deadend.setExits(null, null, null, HobShire);
-        pompeii.setExits(null, HobShire, mtVesuvius, null);
-        rainbowroad.setExits(HobShire, mtTabor, null, mtVesuvius);
-        mtTabor.setExits(null, null, null, rainbowroad);
-        northernwastes.setExits(null, mtPleasantafternoon, null, mtDoom);
-        mtDoom.setExits(null, northernwastes, null, null);
-        mtPleasantafternoon.setExits(null, null, null, northernwastes);
-        mtVesuvius.setExits(pompeii, rainbowroad, null, null);
+        HobShire.setExit("north", northernwastes);
+        HobShire.setExit("east", deadend);
+        HobShire.setExit("south", rainbowroad);
+        HobShire.setExit("west", pompeii);
+        deadend.setExit("west", HobShire);
+        pompeii.setExit("east", HobShire); 
+        pompeii.setExit("south", mtVesuvius);
+        rainbowroad.setExit("north", HobShire); 
+        rainbowroad.setExit("east", mtTabor);
+        rainbowroad.setExit("west", mtVesuvius);
+        mtTabor.setExit("west", rainbowroad);
+        northernwastes.setExit("east", mtPleasantafternoon); 
+        northernwastes.setExit("west", mtDoom);
+        mtDoom.setExit("east", northernwastes);
+        mtPleasantafternoon.setExit("west", northernwastes);
+        mtVesuvius.setExit("north", pompeii);
+        mtVesuvius.setExit("east", rainbowroad);
 
         currentRoom = HobShire;  // start game outside
     }

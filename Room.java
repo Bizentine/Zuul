@@ -19,6 +19,7 @@ import java.util.Set;
 public class Room 
 {
     private String description;
+    private String item;
     private HashMap<String, Room> exits;
 
     /**
@@ -27,9 +28,10 @@ public class Room
      * "an open court yard".
      * @param description The room's description.
      */
-    public Room(String description) 
+    public Room(String description, String item) 
     {
         this.description = description;
+        this.item = item;
         exits = new HashMap<>();
     }
 

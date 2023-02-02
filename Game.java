@@ -15,10 +15,11 @@
  * @version 2016.02.29
  */
 
-public class Game 
+public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Item currentItem;
         
     /**
      * Create the game and initialise its internal map.
@@ -29,23 +30,29 @@ public class Game
         parser = new Parser();
     }
 
+    private void createItem()
+    {
+        Item theOneRing;
+        
+        theOneRing = new Item("The ring has awoken. It's master calls. \n The ring would like to sleep for like 15 more minutes please.", 1);
+    }
+    
     /**
      * Create all the rooms and link their exits together.
      */
     private void createRooms()
     {
         Room HobShire, deadend, pompeii, rainbowroad, mtTabor, northernwastes, mtDoom, mtPleasantafternoon, mtVesuvius;
-      
         // create the rooms
-        HobShire = new Room("in HobShire, \n a scenic and legally distinct shire");
-        deadend = new Room("at a dead end, \n Theres nothing here but a red fish of some kind");
-        pompeii = new Room("in a pleasant city called \"pompeii\",\n but it gives you a feeling of impending doom");
-        rainbowroad = new Room("on the Rainbow Road!\n You fall off a lot and its very stressful, and yet its your favorite for some reason?");
-        mtTabor = new Room("on Mt Tabor.\n The caldera has an archery range");
-        northernwastes = new Room("in the Northern Wastes.\n This place gives you the distict feeling that you know nothing");
-        mtDoom = new Room("on Mt Doom.\n You get the feeling you are being watched");
-        mtPleasantafternoon = new Room("on Mt Pleasant Afternoon.\n Must be like greenland/iceland because its midday and hailing");
-        mtVesuvius = new Room("on Mt Vesuvius.\n It sounds angry");
+        HobShire = new Room("in HobShire, \n a scenic and legally distinct shire", "");
+        deadend = new Room("at a dead end, \n Theres nothing here but a red fish of some kind", "The One Ring");
+        pompeii = new Room("in a pleasant city called \"pompeii\",\n but it gives you a feeling of impending doom", "");
+        rainbowroad = new Room("on the Rainbow Road!\n You fall off a lot and its very stressful, and yet its your favorite for some reason?", "");
+        mtTabor = new Room("on Mt Tabor.\n The caldera has an archery range", "");
+        northernwastes = new Room("in the Northern Wastes.\n This place gives you the distict feeling that you know nothing", "");
+        mtDoom = new Room("on Mt Doom.\n You get the feeling you are being watched", "");
+        mtPleasantafternoon = new Room("on Mt Pleasant Afternoon.\n Must be like greenland/iceland because its midday and hailing", "");
+        mtVesuvius = new Room("on Mt Vesuvius.\n It sounds angry", "");
         
         // initialise room exits
         HobShire.setExit("north", northernwastes);
@@ -168,7 +175,8 @@ public class Game
     private void printLocationInfo()
     {
         System.out.println(currentRoom.getLongDescription());
-            System.out.print(currentRoom.getExitString());
+        System.out.print(currentRoom.getExitString());
+        System.out.print(currentItem.getItemDescription());
     }
     
 
